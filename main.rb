@@ -4,7 +4,7 @@ require 'haml'
 require 'dm-core'
 require 'sinatra-authentication'
 
-use Rack::Session::Cookie, :secret => 'yarr, how many times can a secret be reused? They will never guess the the ~ilde'
+use Rack::Session::Cookie, :secret => ENV['SESSION_SECRET'] || 'This is a secret key that no one will guess~'
 
 class Something
   include DataMapper::Resource
