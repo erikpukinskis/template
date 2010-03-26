@@ -3,3 +3,4 @@ haml
 dm-core
 sinatra-authentication
 data_objects
+do_postgres
