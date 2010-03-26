@@ -2,4 +2,4 @@ sinatra
 haml
 dm-core
 sinatra-authentication
-sinatra-authentication
+data_objects
