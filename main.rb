@@ -10,13 +10,25 @@ class Something
   include DataMapper::Resource
   property :id, Serial
   property :stuff, String
+  property :dm_user_id, Integer
+  belongs_to :dm_user
+end
+
+class DmUser
+  has n, :somethings
 end
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/test.db")
 DataMapper.auto_upgrade!
 
 get '/' do
+  @somethings = current_user.somethings
   haml :index
+end
+
+post '/somethings' do
+  current_user.somethings.create(params)
+  redirect '/'
 end
 
 def name
@@ -48,4 +60,12 @@ __END__
     = yield
 
 @@ index
-hi
+- if logged_in?
+  %form{:method => 'post', :action => '/somethings'}
+    %input{:name => 'stuff'}
+    %input{:type => 'submit', :value => 'save'}
+  %ul
+    - @somethings.each do |thing|
+      %li= thing.stuff
+- else
+  %p Sign up to post stuff!
