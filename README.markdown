@@ -1,6 +1,8 @@
 # Erik's App Template
 
-This is just a little template I use to get Sinatra apps up and running.  Works on Heroku.
+This is just a little template I use to get little Sinatra apps up and running.  It's a 
+minimal app that has a database-backed object (with Datamapper) and basic user authentication
+(signing up, logging in, etc).  It installs on Heroku in a snap.
 
 # Deployment
 
