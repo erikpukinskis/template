@@ -23,6 +23,7 @@ DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/test.db"
 DataMapper.auto_upgrade!
 
 get '/' do
+  auto_login
   @somethings = current_user.somethings
   haml :index
 end
@@ -34,6 +35,18 @@ end
 
 def name
   current_user.email.split("@")[0]
+end
+
+def registered?
+  !!current_user.email
+end
+
+def auto_login
+  unless logged_in?
+    user = User.set({})
+    user.save!
+    session[:user] = user.id
+  end
 end
 
 __END__
@@ -48,7 +61,7 @@ __END__
   %body
     #top_bar
       %ul#account_links
-        - if logged_in?
+        - if registered?
           %li Welcome #{name}!
           %li
             %a{:href => '/logout'} Log out
@@ -56,7 +69,7 @@ __END__
           %li
             %a{:href => '/login'} Log in
           %li
-            %a{:href => '/signup'} Sign up
+            %a{:href => "/users/#{current_user.id}/edit"} Sign up
       #title Name goes here
     = yield
 

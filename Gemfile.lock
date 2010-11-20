@@ -2,6 +2,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     addressable (2.2.2)
+    columnize (0.3.2)
     data_objects (0.10.2)
       addressable (~> 2.1)
     dm-core (1.0.2)
@@ -25,9 +26,15 @@ GEM
       data_objects (= 0.10.2)
     extlib (0.9.15)
     haml (3.0.24)
+    linecache (0.43)
     rack (1.2.1)
     rack-flash (0.1.1)
       rack
+    ruby-debug (0.10.4)
+      columnize (>= 0.1)
+      ruby-debug-base (~> 0.10.4.0)
+    ruby-debug-base (0.10.4)
+      linecache (>= 0.3)
     rufus-tokyo (1.0.7)
     shotgun (0.8)
       rack (>= 1.0)
@@ -58,6 +65,7 @@ DEPENDENCIES
   dm-sqlite-adapter
   do_postgres
   haml
+  ruby-debug
   shotgun
   sinatra
   sinatra-authentication
