@@ -1,0 +1,63 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    addressable (2.2.2)
+    data_objects (0.10.2)
+      addressable (~> 2.1)
+    dm-core (1.0.2)
+      addressable (~> 2.2)
+      extlib (~> 0.9.15)
+    dm-do-adapter (1.0.2)
+      data_objects (~> 0.10.2)
+      dm-core (~> 1.0.2)
+    dm-migrations (1.0.2)
+      dm-core (~> 1.0.2)
+    dm-sqlite-adapter (1.0.2)
+      dm-do-adapter (~> 1.0.2)
+      do_sqlite3 (~> 0.10.2)
+    dm-timestamps (1.0.2)
+      dm-core (~> 1.0.2)
+    dm-validations (1.0.2)
+      dm-core (~> 1.0.2)
+    do_postgres (0.10.2)
+      data_objects (= 0.10.2)
+    do_sqlite3 (0.10.2)
+      data_objects (= 0.10.2)
+    extlib (0.9.15)
+    haml (3.0.24)
+    rack (1.2.1)
+    rack-flash (0.1.1)
+      rack
+    rufus-tokyo (1.0.7)
+    shotgun (0.8)
+      rack (>= 1.0)
+    sinatra (1.1.0)
+      rack (~> 1.1)
+      tilt (~> 1.1)
+    sinatra-authentication (0.3.2)
+      dm-core
+      dm-migrations
+      dm-timestamps
+      dm-validations
+      rack-flash
+      rufus-tokyo
+      sinatra
+      sinbook
+    sinbook (0.1.9)
+      yajl-ruby
+    tilt (1.1)
+    yajl-ruby (0.7.8)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  data_objects
+  dm-core
+  dm-migrations
+  dm-sqlite-adapter
+  do_postgres
+  haml
+  shotgun
+  sinatra
+  sinatra-authentication
